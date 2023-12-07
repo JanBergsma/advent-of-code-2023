@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "leetcode"
+version = "0.1.0"
+description = "Leetcode"
+authors = ["Me"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+autopep8 = "*"
+ipykernel = "*"
+ipython = "*"
+matplotlib = "*"
+memory-profiler = "*"
+nbformat = "*"
+networkx = "*"
+numpy = "*"
+pep8 = "*"
+pipenv = "*"
+plotly = "*"
+psutil = "*"
+pycodestyle = "*"
+pydot = "*"
+pytest = "*"
+scipy = "*"
+tabulate = "*"
+termcolor = "*"
+treelib = "*"
+sortedcontainers = "*"
+sympy = "*"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
