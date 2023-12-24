@@ -28,6 +28,7 @@ termcolor = "*"
 treelib = "*"
 sortedcontainers = "*"
 sympy = "*"
+colorama = "^0.4.6"
 
 
 [build-system]
