@@ -30,6 +30,7 @@ sortedcontainers = "*"
 sympy = "*"
 colorama = "^0.4.6"
 ipympl = "^0.9.3"
+more-itertools = "^10.2.0"
 
 
 [build-system]
