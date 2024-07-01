@@ -5,6 +5,7 @@ description = "Leetcode"
 authors = ["Me"]
 readme = "README.md"
 
+
 [tool.poetry.dependencies]
 python = "^3.12"
 autopep8 = "*"
@@ -31,6 +32,8 @@ sympy = "*"
 colorama = "^0.4.6"
 ipympl = "^0.9.3"
 more-itertools = "^10.2.0"
+printree = "^0.2.0"
+prettyprinttree = "^2.0.0"
 
 
 [build-system]
