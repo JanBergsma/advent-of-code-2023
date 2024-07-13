@@ -35,6 +35,8 @@ more-itertools = "^10.2.0"
 printree = "^0.2.0"
 prettyprinttree = "^2.0.0"
 sortedcollections = "^2.1.0"
+tk = "^0.1.0"
+ipyturtle3 = "^0.1.4"
 
 
 [build-system]
