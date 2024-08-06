@@ -1,0 +1,66 @@
+Walk from AA to XF (16 steps)
+Recurse into level 1 through XF (1 step)    17
+Walk from XF to CK (10 steps)
+Recurse into level 2 through CK (1 step)    28
+Walk from CK to ZH (14 steps)
+Recurse into level 3 through ZH (1 step)    43
+Walk from ZH to WB (10 steps)
+Recurse into level 4 through WB (1 step)    54
+Walk from WB to IC (10 steps)
+Recurse into level 5 through IC (1 step)    65
+Walk from IC to RF (10 steps)
+Recurse into level 6 through RF (1 step)    76
+Walk from RF to NM (8 steps)
+Recurse into level 7 through NM (1 step)    85
+Walk from NM to LP (12 steps)
+Recurse into level 8 through LP (1 step)    98
+Walk from LP to FD (24 steps)
+Recurse into level 9 through FD (1 step)    123
+Walk from FD to XQ (8 steps)
+Recurse into level 10 through XQ (1 step)   132
+Walk from XQ to WB (4 steps)
+Return to level 9 through WB (1 step)       137
+Walk from WB to ZH (10 steps)
+Return to level 8 through ZH (1 step)       148
+Walk from ZH to CK (14 steps)
+Return to level 7 through CK (1 step)       163
+Walk from CK to XF (10 steps)
+Return to level 6 through XF (1 step)       174
+Walk from XF to OA (14 steps)
+Return to level 5 through OA (1 step)       189
+Walk from OA to CJ (8 steps)
+Return to level 4 through CJ (1 step)       198
+Walk from CJ to RE (8 steps)
+Return to level 3 through RE (1 step)       207
+Walk from RE to IC (4 steps)
+Recurse into level 4 through IC (1 step)    212
+Walk from IC to RF (10 steps)
+Recurse into level 5 through RF (1 step)    223
+Walk from RF to NM (8 steps)
+Recurse into level 6 through NM (1 step)    232
+Walk from NM to LP (12 steps)
+Recurse into level 7 through LP (1 step)    245
+Walk from LP to FD (24 steps)
+Recurse into level 8 through FD (1 step)    270
+Walk from FD to XQ (8 steps)
+Recurse into level 9 through XQ (1 step)    279
+Walk from XQ to WB (4 steps)
+Return to level 8 through WB (1 step)       284
+Walk from WB to ZH (10 steps)
+Return to level 7 through ZH (1 step)       295
+Walk from ZH to CK (14 steps)
+Return to level 6 through CK (1 step)       310
+Walk from CK to XF (10 steps)
+Return to level 5 through XF (1 step)       321
+Walk from XF to OA (14 steps)
+Return to level 4 through OA (1 step)       336
+Walk from OA to CJ (8 steps)
+Return to level 3 through CJ (1 step)       345
+Walk from CJ to RE (8 steps)
+Return to level 2 through RE (1 step)       354
+Walk from RE to XQ (14 steps)
+Return to level 1 through XQ (1 step)       369
+Walk from XQ to FD (8 steps)
+Return to level 0 through FD (1 step)       378
+Walk from FD to ZZ (18 steps)               396
+This path takes a total of 396
