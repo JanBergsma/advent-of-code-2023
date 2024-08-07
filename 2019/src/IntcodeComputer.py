@@ -6,6 +6,7 @@ class IntcodeComputer:
     def __init__(self, s: str) -> None:
         self.state = {a: int(i) for a, i in enumerate(s.split(","))}
         self.ip = 0
+        self.waiting_for_input = False
 
     def run(self) -> Generator[int | None, int, None]:
         offset = 0
@@ -22,7 +23,9 @@ class IntcodeComputer:
                 b = self.value(mode_b, offset)
                 self.state[self.adress(mode_a, offset)] = c * b
             elif opcode == 3:
+                self.waiting_for_input = True
                 f = yield
+                self.waiting_for_input = False
                 self.state[self.adress(mode_c, offset)] = f
             elif opcode == 4:
                 c = self.value(mode_c, offset)
