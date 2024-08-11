@@ -53,7 +53,7 @@ class IntcodeComputer:
             elif opcode == 99:
                 return
             else:
-                raise ValueError("1202 program alarm")
+                raise ValueError(f"1202 program alarm. opcode={opcode}")
 
     def opcode(self):
         code = self.state[self.ip]
