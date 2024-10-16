@@ -1,5 +1,17 @@
 {
-  "python.analysis.typeCheckingMode": "off",
+  "python.analysis.typeCheckingMode": "standard",
   "python.analysis.autoImportCompletions": true,
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "python.analysis.autoFormatStrings": true,
+  "python.analysis.completeFunctionParens": true,
+  "python.analysis.completionOverrideExperiment": true,
+  "python.analysis.includeAliasesFromUserFiles": true,
+  "python.analysis.inlayHints.callArgumentNames": "partial",
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.pytestParameters": true,
+  "python.analysis.inlayHints.variableTypes": false,
+  "python.analysis.supportDocstringTemplate": true,
+  "python.analysis.typeEvaluation.deprecateTypingAliases": true,
+  "python.analysis.typeEvaluation.disableBytesTypePromotions": true,
+  "python.analysis.typeEvaluation.enableReachabilityAnalysis": true
 }
