@@ -8,10 +8,11 @@
   "python.analysis.includeAliasesFromUserFiles": true,
   "python.analysis.inlayHints.callArgumentNames": "off",
   "python.analysis.inlayHints.functionReturnTypes": true,
-  "python.analysis.inlayHints.pytestParameters": true,
+  "python.analysis.inlayHints.pytestParameters": false,
   "python.analysis.inlayHints.variableTypes": false,
   "python.analysis.supportDocstringTemplate": true,
   "python.analysis.typeEvaluation.deprecateTypingAliases": true,
   "python.analysis.typeEvaluation.disableBytesTypePromotions": true,
-  "python.analysis.typeEvaluation.enableReachabilityAnalysis": true
+  "python.analysis.typeEvaluation.enableReachabilityAnalysis": true,
+  "editor.fontSize": 14
 }
