@@ -1,11 +1,62 @@
 import re
+from collections.abc import Callable, Sequence
 from copy import deepcopy
+from typing import Any
 
 from termcolor import colored
 
+TestDict = dict[str, Any]
+AssertFunction = Callable[[Any, Any], bool]
 
-def run_tests(f, tests, assert_funct=lambda x, y: x == y):
-    def test(*args):
+
+def test(*args, **kwargs) -> Callable[[Callable[..., Any]], None]:
+    """
+    Decorator to run parameterized tests using run_tests_params.
+
+    Args:
+        *args: Positional arguments to pass to run_tests_params.
+        **kwargs: Keyword arguments to pass to run_tests_params.
+
+    Returns:
+        Callable[[Callable[..., Any]], None]: A decorator that runs the tests.
+
+    Example:
+        >>> @test(tests=[{"name": "test", "diagram": "###A###", "expected": "A"}])
+        ... def dummy(diagram):
+        ...     return diagram[3]
+        test test passed, for dummy.
+        Success
+    """
+
+    def decorator(func: Callable[..., Any]) -> None:
+        run_tests_params(func, *args, **kwargs)
+
+    return decorator
+
+
+def run_tests(
+    f: Callable[..., Any],
+    tests: Sequence[Sequence[Any]],
+    assert_funct: AssertFunction = lambda x, y: x == y,
+) -> None:
+    """
+    Run a series of tests on a function.
+
+    Args:
+        f: Function to test.
+        tests: Sequence of test cases, each a sequence where the last element is expected output.
+        assert_funct: Function to compare actual and expected output.
+
+    Example:
+        >>> def add(a, b): return a + b
+        >>> run_tests(add, [["sum", 2, 3, 5], ["zero", 0, 0, 0]])
+        test sum passed, for add.
+        test zero passed, for add.
+
+        Success
+    """
+
+    def test(*args: Any) -> None:
         expected = args[-1]
         actual = f(*args[:-1])
         if not assert_funct(actual, expected):
@@ -33,7 +84,7 @@ def run_tests(f, tests, assert_funct=lambda x, y: x == y):
 
 def test_all_solutions(
     test_harnass, obj, pattern, tests, assert_funct=lambda x, y: x == y
-):
+) -> None:
     found = False
     for method in (e for e in dir(obj) if re.match(pattern, e)):
         run_tests(test_harnass(getattr(obj(), method)), tests, assert_funct)
@@ -51,7 +102,7 @@ def test_all_solutions(
 
 
 def run_tests_params(f, tests, assert_funct=lambda x, y: x == y):
-    def _test(test):
+    def _test(test) -> bool:
         name, *params, expected = test.items()
         _, name = name
         _, expected = expected
@@ -85,7 +136,7 @@ def test_all_solutions_params(
     tests,
     pattern=r"^[^_+]",
     assert_funct=lambda x, y: x == y,
-):
+) -> None:
     found = False
     for method_name in (e for e in dir(obj()) if re.match(pattern, e)):
         method = getattr(obj(), method_name)
@@ -100,7 +151,7 @@ def test_all_solutions_params(
         print(colored("***There was no method, that did match the pattern!", "red"))
 
 
-def standard_test_harnass(f):
+def standard_test_harnass(f) -> Callable[..., Any]:
     def func(**kwarg):
         actual = f(**kwarg)
         return actual
