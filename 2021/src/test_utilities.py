@@ -13,12 +13,16 @@ def test(*args, **kwargs) -> Callable[[Callable[..., Any]], None]:
     """
     Decorator to run parameterized tests using run_tests_params.
 
-    Args:
-        *args: Positional arguments to pass to run_tests_params.
-        **kwargs: Keyword arguments to pass to run_tests_params.
+    keyword argument:
+        tests: Sequence[Sequence[Any]] = [{
+            "name": "test",
+            "diagram": "###A###",
+            "expected": "A"}
+        ],
+        assert_funct: AssertFunction = lambda x, y: x == y
 
     Returns:
-        Callable[[Callable[..., Any]], None]: A decorator that runs the tests.
+        A decorator that runs the tests.
 
     Example:
         >>> @test(tests=[{"name": "test", "diagram": "###A###", "expected": "A"}])
