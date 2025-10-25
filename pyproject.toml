@@ -37,6 +37,7 @@ prettyprinttree = "^2.0.0"
 sortedcollections = "^2.1.0"
 tk = "^0.1.0"
 ipyturtle3 = "^0.1.4"
+z3-solver = "^4.15.3.0"
 
 
 [build-system]
