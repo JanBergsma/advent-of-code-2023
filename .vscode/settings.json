@@ -1,7 +1,7 @@
 {
   "python.analysis.typeCheckingMode": "off",
   "python.analysis.autoImportCompletions": false,
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "python.analysis.autoFormatStrings": true,
   "python.analysis.completeFunctionParens": false,
   "python.analysis.completionOverrideExperiment": true,
@@ -13,6 +13,5 @@
   "python.analysis.supportDocstringTemplate": true,
   "python.analysis.typeEvaluation.deprecateTypingAliases": true,
   "python.analysis.typeEvaluation.disableBytesTypePromotions": true,
-  "python.analysis.typeEvaluation.enableReachabilityAnalysis": true,
-  "editor.fontSize": 14
+  "python.analysis.typeEvaluation.enableReachabilityAnalysis": true
 }
