@@ -13,5 +13,6 @@
   "python.analysis.supportDocstringTemplate": true,
   "python.analysis.typeEvaluation.deprecateTypingAliases": true,
   "python.analysis.typeEvaluation.disableBytesTypePromotions": true,
-  "python.analysis.typeEvaluation.enableReachabilityAnalysis": true
+  "python.analysis.typeEvaluation.enableReachabilityAnalysis": true,
+  "notebook.defaultFormatter": "esbenp.prettier-vscode"
 }
