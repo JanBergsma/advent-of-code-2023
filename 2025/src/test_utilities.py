@@ -32,8 +32,9 @@ def test(*args, **kwargs) -> Callable[[Callable[..., Any]], None]:
         Success
     """
 
-    def decorator(func: Callable[..., Any]) -> None:
+    def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
         run_tests_params(func, *args, **kwargs)
+        return func
 
     return decorator
 
