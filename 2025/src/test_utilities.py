@@ -9,7 +9,11 @@ TestDict = dict[str, Any]
 AssertFunction = Callable[[Any, Any], bool]
 
 
-def test(*args, **kwargs) -> Callable[[Callable[..., Any]], None]:
+def test(
+    *args: Any,
+    tests: Sequence[TestDict] | None = None,
+    assert_funct: AssertFunction = lambda x, y: x == y,
+) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
     """
     Decorator to run parameterized tests using run_tests_params.
 
@@ -33,7 +37,8 @@ def test(*args, **kwargs) -> Callable[[Callable[..., Any]], None]:
     """
 
     def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
-        run_tests_params(func, *args, **kwargs)
+        if tests is not None:
+            run_tests_params(func, tests, assert_funct)
         return func
 
     return decorator
@@ -62,14 +67,14 @@ def run_tests(
     """
 
     def test(*args: Any) -> None:
-        expected = args[-1]
-        actual = f(*args[:-1])
+        expected: Any = args[-1]
+        actual: Any = f(*args[:-1])
         if not assert_funct(actual, expected):
             raise AssertionError(f"{actual} should be {expected}")
 
-    no_errors = True
+    no_errors: bool = True
     for _args in deepcopy(tests):
-        name = ""
+        name: str = ""
         try:
             name, *_args = _args
             test(*_args)
@@ -88,9 +93,13 @@ def run_tests(
 
 
 def test_all_solutions(
-    test_harnass, obj, pattern, tests, assert_funct=lambda x, y: x == y
+    test_harnass: Callable[[Callable[..., Any]], Callable[..., Any]],
+    obj: Any,
+    pattern: str,
+    tests: Sequence[Sequence[Any]],
+    assert_funct: AssertFunction = lambda x, y: x == y,
 ) -> None:
-    found = False
+    found: bool = False
     for method in (e for e in dir(obj) if re.match(pattern, e)):
         run_tests(test_harnass(getattr(obj(), method)), tests, assert_funct)
         found = True
@@ -106,26 +115,30 @@ def test_all_solutions(
         )  # noqa
 
 
-def run_tests_params(f, tests, assert_funct=lambda x, y: x == y):
-    def _test(test) -> bool:
+def run_tests_params(
+    f: Callable[..., Any],
+    tests: Sequence[TestDict],
+    assert_funct: AssertFunction = lambda x, y: x == y,
+) -> None:
+    def _test(test: TestDict) -> bool:
         name, *params, expected = test.items()
-        _, name = name
-        _, expected = expected
-        params = dict(params)
-        actual = f(**params)
-        if assert_funct(actual, expected):
-            print(colored(f"Test {name} passed, for {f.__name__}.", "green"))
+        _, name_val = name
+        _, expected_val = expected
+        params_dict: dict[str, Any] = dict(params)
+        actual: Any = f(**params_dict)
+        if assert_funct(actual, expected_val):
+            print(colored(f"Test {name_val} passed, for {f.__name__}.", "green"))
             return True
         print(
             colored(
-                f"Test {name }: {actual} should be {expected}, for {f.__name__}.",  # noqa
+                f"Test {name_val }: {actual} should be {expected_val}, for {f.__name__}.",  # noqa
                 "red",
             )
         )
         return False
 
     print()
-    all_passed = True
+    all_passed: bool = True
     for test in deepcopy(tests):
         all_passed &= _test(test)
 
@@ -136,15 +149,15 @@ def run_tests_params(f, tests, assert_funct=lambda x, y: x == y):
 
 
 def test_all_solutions_params(
-    test_harnass,
-    obj,
-    tests,
-    pattern=r"^[^_+]",
-    assert_funct=lambda x, y: x == y,
+    test_harnass: Callable[[Callable[..., Any]], Callable[..., Any]],
+    obj: Any,
+    tests: Sequence[TestDict],
+    pattern: str = r"^[^_+]",
+    assert_funct: AssertFunction = lambda x, y: x == y,
 ) -> None:
-    found = False
+    found: bool = False
     for method_name in (e for e in dir(obj()) if re.match(pattern, e)):
-        method = getattr(obj(), method_name)
+        method: Callable[..., Any] = getattr(obj(), method_name)
 
         run_tests_params(test_harnass(method), tests, assert_funct)
         found = True
@@ -156,9 +169,9 @@ def test_all_solutions_params(
         print(colored("***There was no method, that did match the pattern!", "red"))
 
 
-def standard_test_harnass(f) -> Callable[..., Any]:
-    def func(**kwarg):
-        actual = f(**kwarg)
+def standard_test_harnass(f: Callable[..., Any]) -> Callable[..., Any]:
+    def func(**kwarg: Any) -> Any:
+        actual: Any = f(**kwarg)
         return actual
 
     func.__name__ = f.__name__

@@ -1,5 +1,5 @@
 {
-  "python.analysis.typeCheckingMode": "off",
+  "python.analysis.typeCheckingMode": "strict",
   "python.analysis.autoImportCompletions": false,
   "window.zoomLevel": 0,
   "python.analysis.autoFormatStrings": true,
@@ -14,5 +14,6 @@
   "python.analysis.typeEvaluation.deprecateTypingAliases": true,
   "python.analysis.typeEvaluation.disableBytesTypePromotions": true,
   "python.analysis.typeEvaluation.enableReachabilityAnalysis": true,
-  "notebook.defaultFormatter": "esbenp.prettier-vscode"
+  "notebook.defaultFormatter": "esbenp.prettier-vscode",
+  "python.analysis.generateWithTypeAnnotation": true
 }
