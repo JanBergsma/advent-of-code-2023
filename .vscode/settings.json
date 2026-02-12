@@ -1,5 +1,5 @@
 {
-  "python.analysis.typeCheckingMode": "strict",
+  "python.analysis.typeCheckingMode": "standard",
   "python.analysis.autoImportCompletions": false,
   "window.zoomLevel": 0,
   "python.analysis.autoFormatStrings": true,
